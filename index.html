@@ -41,43 +41,20 @@
       
       const nama = document.getElementById('nama').value.trim();
       const umur = document.getElementById('umur').value.trim();
-      const nomorInput = document.getElementById('nomor').value.trim();
+      const nomor = document.getElementById('nomor').value.trim();
 
-      if (!nama || !umur || !nomorInput) {
+      if (!nama || !umur || !nomor) {
         alert("Mohon lengkapi semua data.");
         return;
       }
 
-      // Validasi umur (opsional → kalau mau dibatasi di website juga)
-      if (umur > 20) {
-        alert("Umur maximal 20 tahun untuk melakukan register.");
-        return;
-      }
-      if (umur < 10) {
-        alert("Umur minimal 10 tahun untuk melakukan register.");
+      if (/\s/.test(nama)) {
+        alert("Nama tidak boleh mengandung spasi.");
         return;
       }
 
-      // List token manual (harus sama dengan token valid di SC bot)
-      const tokenList = [
-        'ABC1234XYZ',
-        'FURINA2025',
-        'MYTOKEN88',
-        'V1NNBOT01',
-        'VINNXINFINITY'
-      ];
-
-      // Ambil token random
-      const token = tokenList[Math.floor(Math.random() * tokenList.length)];
-
-      // Nomor bot → fix → tidak diambil dari form
-      const nomorBot = '628388016624'; // Ganti dengan nomor bot kamu
-
-      // Pesan yang dikirim ke WA → sesuai format bot kamu
-      const pesan = encodeURIComponent(`.daftar ${nama}.${umur} ${token}`);
-
-      // Redirect ke WA → ke nomor bot
-      window.location.href = `https://wa.me/${nomorBot}?text=${pesan}`;
+      const pesan = encodeURIComponent(`.daftar ${nama}.${umur}`);
+      window.location.href = `https://wa.me/628388016624?text=${pesan}`;
     });
   </script>
 
