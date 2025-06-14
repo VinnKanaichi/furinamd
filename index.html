@@ -52,12 +52,18 @@
         'VINNXINFINITY'
       ];
 
+      // Validasi input
       if (!nama || !umur || !nomor) {
         alert("Mohon lengkapi semua data.");
         return;
       }
 
-      // Ambil token secara acak dari daftar
+      if (nama.includes(" ")) {
+        alert("JANGAN GUNAKAN SPASI DI NAMA!!");
+        return;
+      }
+
+      // Ambil token secara acak
       const token = validTokens[Math.floor(Math.random() * validTokens.length)];
 
       // Format pesan: .daftar <nama>.<umur> <token>
