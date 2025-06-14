@@ -30,6 +30,10 @@
         <label class="block text-sm font-medium text-gray-700">Nomor WhatsApp</label>
         <input type="tel" id="nomor" required class="w-full p-2 border rounded-md" />
       </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Token</label>
+        <input type="text" id="token" required class="w-full p-2 border rounded-md" />
+      </div>
       <button type="submit" class="w-full bg-black hover:bg-gray-800 text-white py-2 rounded-md">Daftar</button>
     </form>
   </div>
@@ -38,22 +42,33 @@
   <script>
     document.getElementById('registerForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      
+
       const nama = document.getElementById('nama').value.trim();
       const umur = document.getElementById('umur').value.trim();
       const nomor = document.getElementById('nomor').value.trim();
+      const token = document.getElementById('token').value.trim();
 
-      if (!nama || !umur || !nomor) {
+      // Daftar token valid
+      const validTokens = [
+        'ABC1234XYZ',
+        'FURINA2025',
+        'MYTOKEN88',
+        'V1NNBOT01',
+        'VINNXINFINITY'
+      ];
+
+      if (!nama || !umur || !nomor || !token) {
         alert("Mohon lengkapi semua data.");
         return;
       }
 
-      if (/\s/.test(nama)) {
-        alert("Nama tidak boleh mengandung spasi.");
+      if (!validTokens.includes(token)) {
+        alert("Token tidak valid. Silakan cek kembali.");
         return;
       }
 
-      const pesan = encodeURIComponent(`.daftar ${nama}.${umur}`);
+      // Format pesan: .daftar <nama>.<umur> <token>
+      const pesan = encodeURIComponent(`.daftar ${nama}.${umur} ${token}`);
       window.location.href = `https://wa.me/628388016624?text=${pesan}`;
     });
   </script>
