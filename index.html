@@ -30,10 +30,6 @@
         <label class="block text-sm font-medium text-gray-700">Nomor WhatsApp</label>
         <input type="tel" id="nomor" required class="w-full p-2 border rounded-md" />
       </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Token</label>
-        <input type="text" id="token" required class="w-full p-2 border rounded-md" />
-      </div>
       <button type="submit" class="w-full bg-black hover:bg-gray-800 text-white py-2 rounded-md">Daftar</button>
     </form>
   </div>
@@ -46,7 +42,6 @@
       const nama = document.getElementById('nama').value.trim();
       const umur = document.getElementById('umur').value.trim();
       const nomor = document.getElementById('nomor').value.trim();
-      const token = document.getElementById('token').value.trim();
 
       // Daftar token valid
       const validTokens = [
@@ -57,15 +52,13 @@
         'VINNXINFINITY'
       ];
 
-      if (!nama || !umur || !nomor || !token) {
+      if (!nama || !umur || !nomor) {
         alert("Mohon lengkapi semua data.");
         return;
       }
 
-      if (!validTokens.includes(token)) {
-        alert("Token tidak valid. Silakan cek kembali.");
-        return;
-      }
+      // Ambil token secara acak dari daftar
+      const token = validTokens[Math.floor(Math.random() * validTokens.length)];
 
       // Format pesan: .daftar <nama>.<umur> <token>
       const pesan = encodeURIComponent(`.daftar ${nama}.${umur} ${token}`);
