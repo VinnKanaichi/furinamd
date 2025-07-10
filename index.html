@@ -67,7 +67,7 @@
       const token = validTokens[Math.floor(Math.random() * validTokens.length)];
 
       // Format pesan: .daftar <nama>.<umur> <token>
-      const pesan = encodeURIComponent(`.daftar ${nama}.${umur} ${token}`);
+      const pesan = encodeURIComponent(`.daftar ${nama} ${umur} ${token}`);
       window.location.href = `intent://send/?phone=628388016624&text=${pesan}#Intent;package=com.whatsapp;scheme=smsto;end`;
     });
   </script>
