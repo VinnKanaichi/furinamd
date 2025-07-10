@@ -66,7 +66,9 @@
       const token = validTokens[Math.floor(Math.random() * validTokens.length)];
 
       // Format pesan: .daftar <nama>.<umur> <tokem>
-const pesan = encodeURIComponent(`.daftar ${nama}.${umur} ${token}`);
+const teksDaftar = `.daftar ${nama}.${umur} ${token}`;
+const catatan = `\n\n⚠ Jika terbuka di WhatsApp Bisnis, salin pesan ini dan kirim ulang ke WhatsApp ORI (misalnya via WA PC bot ya).`;
+const pesan = encodeURIComponent(teksDaftar + catatan);
 
 // BACKUP — pakai wa.me agar lancar (buka WA ORI atau WA Bisnis)
 window.location.href = `https://wa.me/628388016624?text=${pesan}`;
