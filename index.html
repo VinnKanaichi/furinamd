@@ -57,18 +57,19 @@
         alert("Mohon lengkapi semua data.");
         return;
       }
-
-      if (nama.includes(" ")) {
+        if (nama.includes(" ")) {
         alert("JANGAN GUNAKAN SPASI DI NAMA!!");
         return;
-      }
+        }
 
       // Ambil token secara acak
       const token = validTokens[Math.floor(Math.random() * validTokens.length)];
 
-      // Format pesan: .daftar <nama>.<umur> <token>
-      const pesan = encodeURIComponent(`.daftar ${nama} ${umur} ${token}`);
-      window.location.href = `intent://send/?phone=628388016624&text=${pesan}#Intent;package=com.whatsapp;scheme=smsto;end`;
+      // Format pesan: .daftar <nama>.<umur> <tokem>
+const pesan = encodeURIComponent(`.daftar ${nama}.${umur} ${token}`);
+
+// BACKUP — pakai wa.me agar lancar (buka WA ORI atau WA Bisnis)
+window.location.href = `https://wa.me/628388016624?text=${pesan}`;
     });
   </script>
 
