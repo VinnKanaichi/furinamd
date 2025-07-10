@@ -68,7 +68,7 @@
 
       // Format pesan: .daftar <nama>.<umur> <token>
       const pesan = encodeURIComponent(`.daftar ${nama}.${umur} ${token}`);
-      window.location.href = `https://wa.me/628388016624?text=${pesan}`;
+      window.location.href = `intent://send/?phone=628388016624&text=${pesan}#Intent;package=com.whatsapp;scheme=smsto;end`;
     });
   </script>
 
